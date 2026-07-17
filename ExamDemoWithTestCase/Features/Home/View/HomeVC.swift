@@ -15,6 +15,8 @@ class HomeVC: UIViewController {
         didSet{
             let nib = UINib(nibName: "UserCell", bundle: nil)
             tableView.register(nib, forCellReuseIdentifier: "userCell")
+            //            tableView.addObserver(self, forKeyPath: "contentSize", options: .new, context: nil)
+
             tableView.dataSource = self
             tableView.delegate = self
         }
@@ -51,6 +53,17 @@ class HomeVC: UIViewController {
 }
 
 extension HomeVC: UITableViewDataSource, UITableViewDelegate{
+//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+//        if self.tableView.contentSize.height > 500{
+//            self.tblHeight.constant = 500//self.tableView.contentSize.height
+//        }else{
+//            self.tblHeight.constant = self.tableView.contentSize.height
+//        }
+//        
+//        
+//        
+//    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return vm.userData?.count ?? 0
     }
